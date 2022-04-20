@@ -1,9 +1,6 @@
-from typing import Optional, List
-import spacy
+from fastapi import FastAPI
 
-from fastapi import FastAPI, Query, Path
-
-from api_tutorial.rest_api import simple_entities_extraction
+from rest_api import simple_entities_extraction
 
 app = FastAPI()
 
