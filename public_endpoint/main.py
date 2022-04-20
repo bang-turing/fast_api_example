@@ -1,3 +1,4 @@
+import uvicorn
 from fastapi import FastAPI
 
 from rest_api import simple_entities_extraction
@@ -15,7 +16,16 @@ app = FastAPI()
 #         print(ent.text, ent.label_)
 @app.get("/ping")
 def pong():
+    print("ping")
+    print("ping")
+    print("ping")
+    print("ping")
+    print("ping")
     return {"ping": "pong!"}
 
 
 app.include_router(simple_entities_extraction.router, tags=["simple_search_entities"])
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
