@@ -18,7 +18,7 @@ RUN apt-get update \
     && mv /root/.poetry $POETRY_PATH \
     && python -m venv $VENV_PATH \
     && rm -rf /var/lib/apt/lists/*
-    
+
 WORKDIR /usr/src/public_endpoint
 COPY poetry.lock pyproject.toml ./
 RUN poetry config virtualenvs.create false \
@@ -31,5 +31,5 @@ COPY --from=installs $VENV_PATH $VENV_PATH
 WORKDIR /usr/src/public_endpoint
 COPY . .
 
-EXPOSE 4003
-CMD ["gunicorn", "public_endpoint.main:app", "--bind", "0.0.0.0:4003", "--worker-class", "uvicorn.workers.UvicornWorker", "--workers","4", "--threads", "2", "--timeout", "300", "--graceful-timeout", "300"]
+EXPOSE 4005
+CMD ["gunicorn", "public_endpoint.main:app", "--bind", "0.0.0.0:4005", "--worker-class", "uvicorn.workers.UvicornWorker", "--workers","4", "--threads", "2", "--timeout", "300", "--graceful-timeout", "300"]

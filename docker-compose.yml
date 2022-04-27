@@ -4,7 +4,7 @@ services:
     build:
       context: ./public_endpoint
     ports:
-      - "4003:4003"
+      - "4005:4005"
     # volumes:
     #   - ./public_endpoint:/usr/src/public_endpoint
-    command: gunicorn main:app --bind 0.0.0.0:4003 --worker-class uvicorn.workers.UvicornWorker --workers 4 --threads 2 --timeout 300 --graceful-timeout 300
+    command: gunicorn main:app --bind 0.0.0.0:4005 --worker-class uvicorn.workers.UvicornWorker --workers 4 --threads 2 --timeout 300 --graceful-timeout 300
